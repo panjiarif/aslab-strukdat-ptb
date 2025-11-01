@@ -150,16 +150,12 @@ int main() {
             cin >> nilai;
             akar = sisipNode(akar, nilai);
             cout << "Data berhasil ditambahkan.\n";
-            cin.ignore();
-            cin.get();
             break;
         case 2:
             cout << "Masukkan nilai yang ingin dihapus: ";
             cin >> nilai;
             akar = hapusNode(akar, nilai);
             cout << "Data berhasil dihapus.\n";
-            cin.ignore();
-            cin.get();
             break;
         case 3:
             cout << "Masukkan nilai yang ingin dicari: ";
@@ -168,22 +164,16 @@ int main() {
                 cout << "Data ditemukan di pohon.\n";
             else
                 cout << "Data tidak ditemukan.\n";
-            cin.ignore();
-            cin.get();
             break;
         case 4:
             cout << "\nInorder   : "; inorder(akar);
             cout << "\nPreorder  : "; preorder(akar);
             cout << "\nPostorder : "; postorder(akar);
             cout << endl;
-            cin.ignore();
-            cin.get();
             break;
         case 5:
             cout << "\nStruktur pohon biner:\n";
             tampilkanPohon(akar);
-            cin.ignore();
-            cin.get();
             break;
         case 0:
             cout << "Terima kasih!\n";
@@ -194,6 +184,13 @@ int main() {
             cin.ignore();
             cin.get();
         }
+
+        if (pilihan != 0) {
+            cout << "\nTekan ENTER untuk melanjutkan...";
+            cin.ignore();
+            cin.get();
+        }
+        
     } while (pilihan != 0);
 
     return 0;
