@@ -25,7 +25,7 @@ Node* sisipNode(Node* akar, int nilai) {
     else if (nilai > akar->nilai)
         akar->kanan = sisipNode(akar->kanan, nilai);
     else
-        cout << "Nilai sudah ada di pohon.\n";
+        cout << "Gagal input: Nilai " << nilai << " sudah ada di pohon.\n";
     return akar;
 }
 
@@ -138,6 +138,7 @@ void menu() {
 int main() {
     Node* akar = nullptr;
     int pilihan, nilai;
+    bool nilaiDitemukan, sudahAda;
 
     do {
       system("clear"); // gunakan "cls" jika di Windows
@@ -148,14 +149,24 @@ int main() {
         case 1:
             cout << "Masukkan nilai yang ingin ditambahkan: ";
             cin >> nilai;
-            akar = sisipNode(akar, nilai);
-            cout << "Data berhasil ditambahkan.\n";
+            sudahAda = cariNode(akar, nilai);
+            if (sudahAda) {
+                akar = sisipNode(akar, nilai);
+            } else {
+                akar = sisipNode(akar, nilai);
+                cout << "Nilai " << nilai << " berhasil ditambahkan.\n";
+            }
             break;
         case 2:
             cout << "Masukkan nilai yang ingin dihapus: ";
             cin >> nilai;
-            akar = hapusNode(akar, nilai);
-            cout << "Data berhasil dihapus.\n";
+            nilaiDitemukan = cariNode(akar, nilai);
+            if (nilaiDitemukan) {
+                akar = hapusNode(akar, nilai);
+                cout << "Nilai " << nilai << " berhasil dihapus.\n";
+            } else {
+                cout << "Gagal menghapus: Nilai " << nilai << " tidak ditemukan di pohon.\n";
+            }
             break;
         case 3:
             cout << "Masukkan nilai yang ingin dicari: ";
